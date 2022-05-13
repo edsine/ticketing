@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Ticket\StoreRequest;
 use App\Http\Requests\Ticket\TicketReplyRequest;
 use App\Http\Resources\Department\DepartmentSelectResource;
+use App\Http\Resources\Priority\PriorityResource;
 use App\Http\Resources\Status\StatusResource;
 use App\Http\Resources\Ticket\TicketDetailsResource;
 use App\Http\Resources\Ticket\TicketListResource;
 use App\Http\Resources\Ticket\TicketManageResource;
 use App\Models\Department;
+use App\Models\Priority;
 use App\Models\Setting;
 use App\Models\Status;
 use App\Models\Ticket;
@@ -73,6 +75,7 @@ class TicketController extends Controller
         $ticket->uuid = Str::uuid();
         $ticket->subject = $request->get('subject');
         $ticket->status_id = 1;
+        $ticket->priority_id = $request->get('priority_id');
         if ($request->has('department_id')) {
             $ticket->department_id = $request->get('department_id');
         }
@@ -148,6 +151,11 @@ class TicketController extends Controller
     public function departments(): JsonResponse
     {
         return response()->json(DepartmentSelectResource::collection(Department::where('public', '=', true)->get()));
+    }
+
+    public function priorities(): JsonResponse
+    {
+        return response()->json(PriorityResource::collection(Priority::orderBy('value')->get()));
     }
 
     public function statuses(): JsonResponse

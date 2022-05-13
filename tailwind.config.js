@@ -8,7 +8,12 @@ module.exports = {
     ],
     theme: {
         colors,
-        extend: {}
+        extend: {
+            colors: {
+                'pgl-blue': '#1e5268',
+                'pgl-green': '#8dd34c',
+            },
+        }
     },
     variants: {},
     plugins: [
