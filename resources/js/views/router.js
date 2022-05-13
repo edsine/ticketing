@@ -66,11 +66,13 @@ import AccountPage from "@/views/pages/account/account";
 import DashboardNotFoundPage from "@/views/pages/dashboard/error/not-found";
 import PageNotFoundPage from "@/views/pages/error/not-found";
 
+import LandingPage from "@/views/pages/landing/landing";
+
 Vue.use(VueRouter);
 
 let routes = [
     {
-        path: '/', redirect: '/auth/login',
+        path: '/', component: LandingPage
     },
     {
         path: '/auth', component: AuthLayout, redirect: '/auth/login',
