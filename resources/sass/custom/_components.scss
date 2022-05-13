@@ -22,7 +22,7 @@
 
     &.router-link-active,
     &.router-link-exact-active {
-        @apply text-white bg-gray-900;
+        @apply text-white bg-pgl-green;
     }
 
     &:not(.router-link-active),
