@@ -22,11 +22,16 @@
 
     &.router-link-active,
     &.router-link-exact-active {
-        @apply text-white bg-pgl-green;
+        @apply text-pgl-blue bg-pgl-green;
+
+        & .svg {
+            @apply text-pgl-blue;
+        }
+
     }
 
     &:not(.router-link-active),
-    &:not(.router-link-exact-active), {
+    &:not(.router-link-exact-active) {
         @apply text-gray-300;
 
         &:hover {
