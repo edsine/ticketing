@@ -44,7 +44,7 @@
                 shadow-sm
                 rounded-lg
               "
-              to="/auth/register"
+              to="/auth/login"
             >
               {{ $t("Get Started") }}
             </router-link>
