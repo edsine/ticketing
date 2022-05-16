@@ -1,12 +1,21 @@
 <template>
   <div class="py-7">
     <header class="">
-      <div class="max-w-7xl mx-auto sm:px-4 lg:px-6 px-3">
-        <div class="md:flex md:items-center md:justify-between">
-          <logo text-class="text-pgl-blue" />
-          <div class="mt-4 flex md:mt-0 md:ml-4">
+      <div class="mx-auto sm:px-4 lg:px-6 px-3">
+        <div class="flex items-center justify-between">
+          <div>
+            <logo text-class="text-pgl-blue" />
+          </div>
+          <div>
             <router-link
-              class="btn bg-pgl-green text-white shadow-sm rounded-lg"
+              class="
+                btn
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                shadow-sm
+                rounded-lg
+              "
               to="/auth/login"
             >
               {{ $t("Login") }}
@@ -16,25 +25,32 @@
       </div>
     </header>
     <main>
-      <div class="flex justify-between mx-auto pt-32 px-44">
-        <div class="w-3/6 items-center mt-10">
-          <h1 class="text-3xl mb-10 font-black">PGL Help Desk Support</h1>
-          <h5 class="mb-10">
+      <div class="flex flex-col-reverse justify-between mx-auto pt-32 px-3 md:px-10 lg:px-12 md:flex-row">
+        <div class="flex flex-col justify-center mt-10 md:mt-0 md:w-1/2">
+          <h1 class="text-center text-3xl mb-10 font-black md:text-left">PGL Help Desk Support</h1>
+          <h5 class="mb-10 text-center md:text-left">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
             voluptate dignissimos provident deserunt. Laborum perferendis
             ducimus iure, sit fuga magnam voluptatibus suscipit asperiores harum
             debitis! Illum labore ex reiciendis dolor?
           </h5>
-          <div class="">
+          <div class="text-center md:text-left">
             <router-link
-              class="btn bg-pgl-green text-white shadow-sm rounded-lg"
+              class="
+                btn
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                shadow-sm
+                rounded-lg
+              "
               to="/auth/register"
             >
               {{ $t("Get Started") }}
             </router-link>
           </div>
         </div>
-        <div class="ml-10">
+        <div class="md:w-1/2">
           <img :src="image" alt="" />
         </div>
       </div>
