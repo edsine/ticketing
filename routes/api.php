@@ -1,21 +1,22 @@
 <?php
 
-use App\Http\Controllers\Api\Account\AccountController as AccountAccountController;
+use App\Http\Controllers\Api\Dashboard\Admin\CompanyController as DashboardAdminCompanyController;
 use App\Http\Controllers\Api\Auth\AuthController as AuthAuthController;
-use App\Http\Controllers\Api\Dashboard\Admin\DepartmentController as DashboardAdminDepartmentController;
-use App\Http\Controllers\Api\Dashboard\Admin\LabelController as DashboardAdminLabelController;
-use App\Http\Controllers\Api\Dashboard\Admin\LanguageController as DashboardAdminLanguageController;
-use App\Http\Controllers\Api\Dashboard\Admin\PriorityController as DashboardAdminPriorityController;
-use App\Http\Controllers\Api\Dashboard\Admin\SettingController as DashboardAdminSettingController;
-use App\Http\Controllers\Api\Dashboard\Admin\StatusController as DashboardAdminStatusController;
-use App\Http\Controllers\Api\Dashboard\Admin\UserController as DashboardAdminUserController;
-use App\Http\Controllers\Api\Dashboard\Admin\UserRoleController as DashboardAdminUserRoleController;
-use App\Http\Controllers\Api\Dashboard\CannedReplyController as DashboardCannedReplyController;
+use App\Http\Controllers\Api\File\FileController as FileFileController;
+use App\Http\Controllers\Api\Ticket\TicketController as UserTicketController;
+use App\Http\Controllers\Api\Account\AccountController as AccountAccountController;
 use App\Http\Controllers\Api\Dashboard\StatsController as DashboardStatsController;
 use App\Http\Controllers\Api\Dashboard\TicketController as DashboardTicketController;
-use App\Http\Controllers\Api\File\FileController as FileFileController;
 use App\Http\Controllers\Api\Language\LanguageController as LanguageLanguageController;
-use App\Http\Controllers\Api\Ticket\TicketController as UserTicketController;
+use App\Http\Controllers\Api\Dashboard\Admin\UserController as DashboardAdminUserController;
+use App\Http\Controllers\Api\Dashboard\Admin\LabelController as DashboardAdminLabelController;
+use App\Http\Controllers\Api\Dashboard\CannedReplyController as DashboardCannedReplyController;
+use App\Http\Controllers\Api\Dashboard\Admin\StatusController as DashboardAdminStatusController;
+use App\Http\Controllers\Api\Dashboard\Admin\SettingController as DashboardAdminSettingController;
+use App\Http\Controllers\Api\Dashboard\Admin\LanguageController as DashboardAdminLanguageController;
+use App\Http\Controllers\Api\Dashboard\Admin\PriorityController as DashboardAdminPriorityController;
+use App\Http\Controllers\Api\Dashboard\Admin\UserRoleController as DashboardAdminUserRoleController;
+use App\Http\Controllers\Api\Dashboard\Admin\DepartmentController as DashboardAdminDepartmentController;
 
 Route::group(['prefix' => 'lang'], static function () {
     Route::get('/', [LanguageLanguageController::class, 'list'])->name('language.list');
@@ -72,6 +73,8 @@ Route::group(['prefix' => 'dashboard'], static function () {
         Route::apiResource('departments', DashboardAdminDepartmentController::class);
 
         Route::apiResource('labels', DashboardAdminLabelController::class);
+
+        Route::apiResource('companies', DashboardAdminCompanyController::class);
 
         Route::apiResource('statuses', DashboardAdminStatusController::class)->except(['store', 'delete']);
 
