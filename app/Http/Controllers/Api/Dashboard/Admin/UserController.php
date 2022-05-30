@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Api\Dashboard\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\Admin\User\StoreRequest;
-use App\Http\Requests\Dashboard\Admin\User\UpdateRequest;
-use App\Http\Resources\User\UserResource;
-use App\Http\Resources\UserRole\UserRoleResource;
-use App\Models\User;
-use App\Models\UserRole;
 use Auth;
 use Exception;
-use Illuminate\Http\JsonResponse;
+use App\Models\User;
+use App\Models\Company;
+use App\Models\UserRole;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\User\UserResource;
+use App\Http\Resources\UserRole\UserRoleResource;
+use App\Http\Resources\Company\CompanySelectResource;
+use App\Http\Requests\Dashboard\Admin\User\StoreRequest;
+use App\Http\Requests\Dashboard\Admin\User\UpdateRequest;
 
 class UserController extends Controller
 {
@@ -61,6 +63,9 @@ class UserController extends Controller
         $user->status = $request->get('status');
         $user->role_id = $request->get('role_id');
         $user->password = bcrypt($request->get('password'));
+        if($request->get('company_id') != null){
+            $user->company_id = $request->get('company_id');
+        }
         if ($user->save()) {
             return response()->json(['message' => __('Data saved correctly'), 'user' => new UserResource($user)]);
         }
@@ -97,6 +102,9 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->status = $request->get('status');
         $user->role_id = $request->get('role_id');
+        if($request->get('company_id') != null){
+            $user->company_id = $request->get('company_id');
+        }
         if ($user->save()) {
             return response()->json(['message' => 'Data updated correctly', 'user' => new UserResource($user)]);
         }
@@ -126,5 +134,10 @@ class UserController extends Controller
     public function userRoles(): JsonResponse
     {
         return response()->json(UserRoleResource::collection(UserRole::all()));
+    }
+
+    public function companies(): JsonResponse
+    {
+        return response()->json(CompanySelectResource::collection(Company::all()));
     }
 }

@@ -22,7 +22,7 @@
                 type="password"
             />
         </div>
-        <div class="mb-4 text-right">
+        <div class="mb-4 text-center">
             <button id="submit-login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline" data-style="zoom-in" type="submit">
                 {{ $t('Sign In') }}
             </button>

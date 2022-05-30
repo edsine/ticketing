@@ -105,7 +105,7 @@
                                                                     <template v-slot:selectOption="props">
                                                                         <div class="flex items-center space-x-3">
                                                                             <div class="flex-shrink-0 inline-block">
-                                                                                <img :src="props.option.avatar !== 'gravatar' ? props.option.avatar : props.option.gravatar" alt="Icon" class="w-5 h-auto rounded-full">
+                                                                                <img :src="props.option.avatar ? props.option.avatar : props.option.gravatar" alt="Icon" class="w-5 h-auto rounded-full">
                                                                             </div>
                                                                             <div :class="Object.values(filters.agents).indexOf(props.option.id) > -1 ? 'font-semibold' : 'font-normal'" class="font-normal block truncate">
                                                                                 {{ props.option.name }}

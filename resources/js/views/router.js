@@ -29,6 +29,14 @@ import AdminDashboardDepartmentsList from "@/views/pages/dashboard/admin/departm
 import AdminDashboardDepartmentsNew from "@/views/pages/dashboard/admin/departments/new";
 import AdminDashboardDepartmentsEdit from "@/views/pages/dashboard/admin/departments/edit";
 
+import AdminDashboardCompaniesList from "@/views/pages/dashboard/admin/companies/list";
+import AdminDashboardCompaniesNew from "@/views/pages/dashboard/admin/companies/new";
+import AdminDashboardCompaniesEdit from "@/views/pages/dashboard/admin/companies/edit";
+
+import AdminDashboardProjectsList from "@/views/pages/dashboard/admin/projects/list";
+import AdminDashboardProjectsNew from "@/views/pages/dashboard/admin/projects/new";
+import AdminDashboardProjectsEdit from "@/views/pages/dashboard/admin/projects/edit";
+
 import AdminDashboardLabelsList from "@/views/pages/dashboard/admin/labels/list";
 import AdminDashboardLabelsNew from "@/views/pages/dashboard/admin/labels/new";
 import AdminDashboardLabelsEdit from "@/views/pages/dashboard/admin/labels/edit";
@@ -66,11 +74,13 @@ import AccountPage from "@/views/pages/account/account";
 import DashboardNotFoundPage from "@/views/pages/dashboard/error/not-found";
 import PageNotFoundPage from "@/views/pages/error/not-found";
 
+import LandingPage from "@/views/pages/landing/landing";
+
 Vue.use(VueRouter);
 
 let routes = [
     {
-        path: '/', redirect: '/auth/login',
+        path: '/', component: LandingPage
     },
     {
         path: '/auth', component: AuthLayout, redirect: '/auth/login',
@@ -105,6 +115,14 @@ let routes = [
             {path: 'admin/departments', component: AdminDashboardDepartmentsList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.DepartmentController'}},
             {path: 'admin/departments/new', component: AdminDashboardDepartmentsNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.DepartmentController'}},
             {path: 'admin/departments/:id/edit', component: AdminDashboardDepartmentsEdit, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.DepartmentController'}},
+
+            {path: 'admin/companies', component: AdminDashboardCompaniesList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
+            {path: 'admin/companies/new', component: AdminDashboardCompaniesNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
+            {path: 'admin/companies/:id/edit', component: AdminDashboardCompaniesEdit, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
+
+            {path: 'admin/projects', component: AdminDashboardProjectsList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
+            {path: 'admin/projects/new', component: AdminDashboardProjectsNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
+            {path: 'admin/projects/:id/edit', component: AdminDashboardProjectsEdit, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
 
             {path: 'admin/labels', component: AdminDashboardLabelsList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.LabelController'}},
             {path: 'admin/labels/new', component: AdminDashboardLabelsNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.LabelController'}},

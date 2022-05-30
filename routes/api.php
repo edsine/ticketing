@@ -1,21 +1,23 @@
 <?php
 
-use App\Http\Controllers\Api\Account\AccountController as AccountAccountController;
+use App\Http\Controllers\Api\Dashboard\Admin\CompanyController as DashboardAdminCompanyController;
+use App\Http\Controllers\Api\Dashboard\Admin\ProjectController as DashboardAdminProjectController;
 use App\Http\Controllers\Api\Auth\AuthController as AuthAuthController;
-use App\Http\Controllers\Api\Dashboard\Admin\DepartmentController as DashboardAdminDepartmentController;
-use App\Http\Controllers\Api\Dashboard\Admin\LabelController as DashboardAdminLabelController;
-use App\Http\Controllers\Api\Dashboard\Admin\LanguageController as DashboardAdminLanguageController;
-use App\Http\Controllers\Api\Dashboard\Admin\PriorityController as DashboardAdminPriorityController;
-use App\Http\Controllers\Api\Dashboard\Admin\SettingController as DashboardAdminSettingController;
-use App\Http\Controllers\Api\Dashboard\Admin\StatusController as DashboardAdminStatusController;
-use App\Http\Controllers\Api\Dashboard\Admin\UserController as DashboardAdminUserController;
-use App\Http\Controllers\Api\Dashboard\Admin\UserRoleController as DashboardAdminUserRoleController;
-use App\Http\Controllers\Api\Dashboard\CannedReplyController as DashboardCannedReplyController;
+use App\Http\Controllers\Api\File\FileController as FileFileController;
+use App\Http\Controllers\Api\Ticket\TicketController as UserTicketController;
+use App\Http\Controllers\Api\Account\AccountController as AccountAccountController;
 use App\Http\Controllers\Api\Dashboard\StatsController as DashboardStatsController;
 use App\Http\Controllers\Api\Dashboard\TicketController as DashboardTicketController;
-use App\Http\Controllers\Api\File\FileController as FileFileController;
 use App\Http\Controllers\Api\Language\LanguageController as LanguageLanguageController;
-use App\Http\Controllers\Api\Ticket\TicketController as UserTicketController;
+use App\Http\Controllers\Api\Dashboard\Admin\UserController as DashboardAdminUserController;
+use App\Http\Controllers\Api\Dashboard\Admin\LabelController as DashboardAdminLabelController;
+use App\Http\Controllers\Api\Dashboard\CannedReplyController as DashboardCannedReplyController;
+use App\Http\Controllers\Api\Dashboard\Admin\StatusController as DashboardAdminStatusController;
+use App\Http\Controllers\Api\Dashboard\Admin\SettingController as DashboardAdminSettingController;
+use App\Http\Controllers\Api\Dashboard\Admin\LanguageController as DashboardAdminLanguageController;
+use App\Http\Controllers\Api\Dashboard\Admin\PriorityController as DashboardAdminPriorityController;
+use App\Http\Controllers\Api\Dashboard\Admin\UserRoleController as DashboardAdminUserRoleController;
+use App\Http\Controllers\Api\Dashboard\Admin\DepartmentController as DashboardAdminDepartmentController;
 
 Route::group(['prefix' => 'lang'], static function () {
     Route::get('/', [LanguageLanguageController::class, 'list'])->name('language.list');
@@ -42,6 +44,7 @@ Route::apiResource('files', FileFileController::class)->only(['store', 'show']);
 
 Route::get('tickets/statuses', [UserTicketController::class, 'statuses'])->name('tickets.statuses');
 Route::get('tickets/departments', [UserTicketController::class, 'departments'])->name('tickets.departments');
+Route::get('tickets/priorities', [UserTicketController::class, 'priorities'])->name('tickets.priorities');
 Route::post('tickets/attachments', [FileFileController::class, 'uploadAttachment'])->name('tickets.upload-attachment');
 Route::post('tickets/{ticket}/reply', [UserTicketController::class, 'reply'])->name('tickets.reply');
 Route::apiResource('tickets', UserTicketController::class)->except(['update', 'destroy']);
@@ -72,11 +75,18 @@ Route::group(['prefix' => 'dashboard'], static function () {
 
         Route::apiResource('labels', DashboardAdminLabelController::class);
 
+        Route::apiResource('companies', DashboardAdminCompanyController::class);
+
+        Route::get('projects/companies', [DashboardAdminProjectController::class, 'companies'])->name('projects.companies');
+        Route::get('projects/statuses', [DashboardAdminProjectController::class, 'statuses'])->name('projects.statuses');
+        Route::apiResource('projects', DashboardAdminProjectController::class);
+
         Route::apiResource('statuses', DashboardAdminStatusController::class)->except(['store', 'delete']);
 
         Route::apiResource('priorities', DashboardAdminPriorityController::class)->except(['store', 'delete']);
 
         Route::get('users/user-roles', [DashboardAdminUserController::class, 'userRoles'])->name('users.user-roles');
+        Route::get('users/companies', [DashboardAdminUserController::class, 'companies'])->name('users.companies');
         Route::apiResource('users', DashboardAdminUserController::class);
 
         Route::get('user-roles/permissions', [DashboardAdminUserRoleController::class, 'permissions'])->name('user-roles.permissions');
