@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources\User;
 
-use App\Http\Resources\UserRole\UserRoleResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\Company\CompanyResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\UserRole\UserRoleResource;
 
 class UserResource extends JsonResource
 {
@@ -27,6 +28,8 @@ class UserResource extends JsonResource
             'gravatar' => $user->getGravatar(),
             'role' => new UserRoleResource($user->userRole),
             'role_id' => $user->role_id,
+            'company_id' => $user->company_id,
+            'company' => new CompanyResource($user->company),
             'status' => (bool) $user->status,
             'created_at' => $user->created_at->toISOString(),
             'updated_at' => $user->updated_at->toISOString()

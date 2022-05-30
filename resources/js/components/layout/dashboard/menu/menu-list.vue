@@ -84,6 +84,18 @@
       v-if="
         $store.state.permissions &&
         $store.state.permissions[
+          'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'
+        ]
+      "
+      :label="$t('Projects')"
+      :mobile="mobile"
+      icon="font-awesome.users-class-regular"
+      to="/dashboard/admin/projects"
+    ></menu-item>
+    <menu-item
+      v-if="
+        $store.state.permissions &&
+        $store.state.permissions[
           'App.Http.Controllers.Api.Dashboard.Admin.LabelController'
         ]
       "

@@ -28,11 +28,11 @@
       <div class="flex flex-col-reverse justify-between mx-auto pt-32 px-3 md:px-10 lg:px-12 md:flex-row">
         <div class="flex flex-col justify-center mt-10 md:mt-0 md:w-1/2">
           <h1 class="text-center text-3xl mb-10 font-black md:text-left">PGL Help Desk Support</h1>
-          <h5 class="mb-10 text-center md:text-left">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi
-            voluptate dignissimos provident deserunt. Laborum perferendis
-            ducimus iure, sit fuga magnam voluptatibus suscipit asperiores harum
-            debitis! Illum labore ex reiciendis dolor?
+          <h5 class="mb-2 text-center md:text-left">
+            Phone: +2340000000000
+          </h5>
+            <h5 class="mb-10 text-center md:text-left">
+            Email: info@pglnigeria.com
           </h5>
           <div class="text-center md:text-left">
             <router-link

@@ -33,6 +33,10 @@ import AdminDashboardCompaniesList from "@/views/pages/dashboard/admin/companies
 import AdminDashboardCompaniesNew from "@/views/pages/dashboard/admin/companies/new";
 import AdminDashboardCompaniesEdit from "@/views/pages/dashboard/admin/companies/edit";
 
+import AdminDashboardProjectsList from "@/views/pages/dashboard/admin/projects/list";
+import AdminDashboardProjectsNew from "@/views/pages/dashboard/admin/projects/new";
+import AdminDashboardProjectsEdit from "@/views/pages/dashboard/admin/projects/edit";
+
 import AdminDashboardLabelsList from "@/views/pages/dashboard/admin/labels/list";
 import AdminDashboardLabelsNew from "@/views/pages/dashboard/admin/labels/new";
 import AdminDashboardLabelsEdit from "@/views/pages/dashboard/admin/labels/edit";
@@ -115,6 +119,10 @@ let routes = [
             {path: 'admin/companies', component: AdminDashboardCompaniesList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
             {path: 'admin/companies/new', component: AdminDashboardCompaniesNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
             {path: 'admin/companies/:id/edit', component: AdminDashboardCompaniesEdit, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.CompanyController'}},
+
+            {path: 'admin/projects', component: AdminDashboardProjectsList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
+            {path: 'admin/projects/new', component: AdminDashboardProjectsNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
+            {path: 'admin/projects/:id/edit', component: AdminDashboardProjectsEdit, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.ProjectController'}},
 
             {path: 'admin/labels', component: AdminDashboardLabelsList, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.LabelController'}},
             {path: 'admin/labels/new', component: AdminDashboardLabelsNew, meta: {middleware: 'auth', dashboard_access: true, controller: 'App.Http.Controllers.Api.Dashboard.Admin.LabelController'}},

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Dashboard\Admin\CompanyController as DashboardAdminCompanyController;
+use App\Http\Controllers\Api\Dashboard\Admin\ProjectController as DashboardAdminProjectController;
 use App\Http\Controllers\Api\Auth\AuthController as AuthAuthController;
 use App\Http\Controllers\Api\File\FileController as FileFileController;
 use App\Http\Controllers\Api\Ticket\TicketController as UserTicketController;
@@ -76,11 +77,16 @@ Route::group(['prefix' => 'dashboard'], static function () {
 
         Route::apiResource('companies', DashboardAdminCompanyController::class);
 
+        Route::get('projects/companies', [DashboardAdminProjectController::class, 'companies'])->name('projects.companies');
+        Route::get('projects/statuses', [DashboardAdminProjectController::class, 'statuses'])->name('projects.statuses');
+        Route::apiResource('projects', DashboardAdminProjectController::class);
+
         Route::apiResource('statuses', DashboardAdminStatusController::class)->except(['store', 'delete']);
 
         Route::apiResource('priorities', DashboardAdminPriorityController::class)->except(['store', 'delete']);
 
         Route::get('users/user-roles', [DashboardAdminUserController::class, 'userRoles'])->name('users.user-roles');
+        Route::get('users/companies', [DashboardAdminUserController::class, 'companies'])->name('users.companies');
         Route::apiResource('users', DashboardAdminUserController::class);
 
         Route::get('user-roles/permissions', [DashboardAdminUserRoleController::class, 'permissions'])->name('user-roles.permissions');

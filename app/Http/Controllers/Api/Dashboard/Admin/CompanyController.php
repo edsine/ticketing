@@ -79,7 +79,7 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Department  $department
+     * @param  Company  $company
      * @return JsonResponse
      * @throws Exception
      */
